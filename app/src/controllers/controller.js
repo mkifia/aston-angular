@@ -53,4 +53,8 @@ app.controller("auteurController",
 		console.log(result.data);
 		$scope.auteur = result.data[0];
 	})
+});
+
+app.controller("formController", function() {
+	console.log("formController");
 })

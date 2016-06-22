@@ -4,16 +4,20 @@
 <head>
     <meta charset="utf-8">
     <title>AngularJS</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> 
     <style type="text/css">
     	.ma-class{
     		color: red;
     	}
+        input.ng-pristine { background: white; } 
+        input.ng-valid { background: lightgreen; } 
+        input.ng-invalid { background: pink; }
     </style>
 </head>
 
-<body>
+<body class="container">
 
-    <select ng-model="author_id" name="author_id">
+    <select class="form-control" ng-model="author_id" name="author_id">
         <option value="1">auteur 1</option>
         <option value="2">auteur 2</option>
         <option value="3">auteur 3</option>
@@ -28,6 +32,7 @@
 	
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script type="text/javascript" src="app/config/app.js"></script>
     <script type="text/javascript" src="app/src/controllers/controller.js"></script>
 </body>
