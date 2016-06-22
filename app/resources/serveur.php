@@ -8,21 +8,24 @@ switch ($_REQUEST ['method']) {
 		$res->execute();
 		$res = $res->fetchAll(PDO::FETCH_ASSOC);
 		break;
-	case 'getCountries':
-		$res = $pdo->prepare('SELECT * FROM pays ORDER BY libelle_pays');
-		$res->execute();
+	case 'getAuteurById':
+		$res = $pdo->prepare('SELECT * FROM auteur WHERE id_auteur = ?');
+		$res->execute(array($_REQUEST['id_auteur']));
 		$res = $res->fetchAll(PDO::FETCH_ASSOC);
 		break;
-	case 'getDeprtsByIdCountry':
-		$res = $pdo->prepare('SELECT * FROM departements WHERE id_pays = ?');
-
-		$res->execute(array($_REQUEST['id_pays']));
-		$res = $res->fetchAll(PDO::FETCH_ASSOC);
+	case 'addAuteur':
+		$res = $pdo->prepare('INSERT INTO auteur (nom, prenom, fonction) VALUES (?, ?, ?)');
+		$res->execute(array($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['fonction']));
 		break;
-	case 'getCitiesByIdDeprt':
-		$res = $pdo->prepare('SELECT * FROM communes WHERE id_deprt = ?');
-		$res->execute(array($_REQUEST['id_deprt']));
-		$res = $res->fetchAll(PDO::FETCH_ASSOC);
+	case 'deleteAuteur': 
+		$res = $pdo->prepare('DELETE FROM auteur WHERE id_auteur = ?');
+		$res->execute(array($_REQUEST['id_auteurd']));
+		$res = true;
+		break;
+	case 'editAuteur':
+		$res = $pdo->prepare('UPDATE auteur SET nom = ?, prenom = ?, fonction = ?');
+		$res->execute(array($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['fonction']));
+		$res = true;
 		break;
 	default:
 		break;

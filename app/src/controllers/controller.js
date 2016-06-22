@@ -26,20 +26,32 @@ app.controller("SonCtrl", function($scope, $http) {
 	}
 });
 
-app.controller("accueilController", function($scope) {
+app.controller("accueilController", 
+	function($scope) {
 	console.log("accueilController");
 });
 
-app.controller("auteursController", function($scope, $http) {
+app.controller("auteursController", 
+	function($scope, $http) {
 	console.log("auteursController");
-	$http.get('app/resources/auteurs.json').then(function(result) {
-			console.log(result.data);
-			$scope.auteurs = result.data;
-		})
+	$http.get('app/resources/serveur.php', 
+	{
+		params: {method: 'getAuteurs'}
+	}).then(function(result) {
+		console.log(result.data);
+		$scope.auteurs = result.data;
+	})
 });
 
-app.controller("auteurController", function($scope, $routeParams) {
+app.controller("auteurController", 
+	function($scope, $routeParams, $http) {
 	console.log("auteurController", 
 		$routeParams.id_auteur);
-
+	$http.get('app/resources/serveur.php', 
+	{
+		params: {method: 'getAuteurById', id_auteur:$routeParams.id_auteur}
+	}).then(function(result) {
+		console.log(result.data);
+		$scope.auteur = result.data[0];
+	})
 })

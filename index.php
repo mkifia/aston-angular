@@ -13,6 +13,17 @@
 
 <body>
 
+    <select ng-model="author_id" name="author_id" multiple>
+        <option value="1">auteur 1</option>
+        <option value="2">auteur 2</option>
+        <option value="3">auteur 3</option>
+        <option value="4">auteur 4</option>
+    </select>
+    <u>
+        <li><a href="#/auteurs" title="">Get All Authors</a></li>
+        <li><a href="#/auteur/{{author_id}}" title="">Get Author</a></li>
+    </u>
+    
 	<ng-view></ng-view>
 	
     <script src="bower_components/angular/angular.min.js"></script>

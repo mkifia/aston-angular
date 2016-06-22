@@ -1,6 +1,6 @@
 <?php 
 
-$dsn = 'mysql:dbname=futurskill;host=127.0.0.1';
+$dsn = 'mysql:dbname=aston;host=localhost';
 $user = 'root';
 $password = '';
 
