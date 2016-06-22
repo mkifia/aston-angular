@@ -24,8 +24,8 @@ switch ($_REQUEST ['method']) {
 		$res = true;
 		break;
 	case 'editAuteur':
-		$res = $pdo->prepare('UPDATE auteur SET nom = ?, prenom = ?, fonction = ?');
-		$res->execute(array($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['fonction']));
+		$res = $pdo->prepare('UPDATE auteur SET nom = ?, prenom = ?, fonction = ? WHERE id_auteur = ?');
+		$res->execute(array($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['fonction'], $_REQUEST['id_auteur']));
 		$res = true;
 		break;
 	default:
