@@ -45,8 +45,7 @@ app.controller("auteursController",
 
 app.controller("auteurController", 
 	function($scope, $routeParams, $http) {
-	console.log("auteurController", 
-		$routeParams.id_auteur);
+	console.log("auteurController", $routeParams.id_auteur);
 	$http.get('app/resources/serveur.php', 
 	{
 		params: {method: 'getAuteurById', id_auteur:$routeParams.id_auteur}

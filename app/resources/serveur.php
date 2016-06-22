@@ -16,10 +16,11 @@ switch ($_REQUEST ['method']) {
 	case 'addAuteur':
 		$res = $pdo->prepare('INSERT INTO auteur (nom, prenom, fonction) VALUES (?, ?, ?)');
 		$res->execute(array($_REQUEST['nom'], $_REQUEST['prenom'], $_REQUEST['fonction']));
+		$res = true;
 		break;
 	case 'deleteAuteur': 
 		$res = $pdo->prepare('DELETE FROM auteur WHERE id_auteur = ?');
-		$res->execute(array($_REQUEST['id_auteurd']));
+		$res->execute(array($_REQUEST['id_auteur']));
 		$res = true;
 		break;
 	case 'editAuteur':
